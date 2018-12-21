@@ -42,5 +42,12 @@ export default ({ config, db }) => {
     });
   });
 
+  api.delete('/:id', (req, res) => {
+    Restaurant.deleteOne({_id: req.params.id}, (err, restaurant) => {
+      if(err) res.send(err);
+      res.json({message: "Restaurant Deleted!"});
+    });
+  });
+
   return api;
 }
